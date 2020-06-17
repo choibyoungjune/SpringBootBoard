@@ -3,8 +3,10 @@ package com.byoungjune.app.controller;
 import com.byoungjune.app.domain.Board;
 import com.byoungjune.app.repository.BoardRepository;
 import com.byoungjune.app.repository.UserRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
@@ -20,9 +22,9 @@ public class IndexController {
     }
 
     @GetMapping("/")
-    public String index() {
+    public String index(Model model) {
         List<Board> boardList = boardRepository.findAll();
-        boardList.forEach(System.out::println);
+        model.addAttribute("boardList", boardList);
         return "index";
     }
 }
