@@ -1,9 +1,6 @@
 package com.byoungjune.app.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -11,8 +8,9 @@ import java.time.LocalDateTime;
 @Builder
 @Getter
 @NoArgsConstructor
-@Entity
 @AllArgsConstructor
+@Entity
+@ToString(exclude = "user")
 public class Board {
     @Id
     @GeneratedValue
@@ -27,4 +25,7 @@ public class Board {
 
     private LocalDateTime createdDate;
     private LocalDateTime updateDate;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    private User user;
 }
