@@ -5,10 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import java.io.Serializable;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Builder
@@ -16,7 +13,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class User implements Serializable {
+public class User {
+
     @Id
     @GeneratedValue
     private Long idx;
@@ -25,14 +23,6 @@ public class User implements Serializable {
     private String password;
     private String email;
 
-    private LocalDateTime createdData;
-    private LocalDateTime updateData;
-
-    public User(String name, String password, String email, LocalDateTime createdData, LocalDateTime updateData) {
-        this.name = name;
-        this.password = password;
-        this.email = email;
-        this.createdData = createdData;
-        this.updateData = updateData;
-    }
+    private LocalDateTime createdDate;
+    private LocalDateTime updatedDate;
 }
